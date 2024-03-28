@@ -1,34 +1,50 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-// importing Car Component
-import Car from "./components/Car"
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// // importing Car Component
+// import Car from "./components/Car"
 
-// ---------------------------------------
-//  using variables in react
-// const name = "Javlon";
+// // using react list
+// function Garage() {
+//   const cars = [
+//     {id: 1, brand: 'Ford'},
+//     {id: 2, brand: 'BMW'},
+//     {id: 3, brand: 'Audi'}
+//   ];
+//   return (
+//     <>
+//       <h1>Who lives in my garage?</h1>
+//       <ul>
+//         {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
+//       </ul>
+//     </>
+//   );
+// }
 
-// const myFirstElement = (
-//   <>
-//     <h1>React is {5 + 5} times better with JSX</h1>
-//     {/* <h1>The learner name is {name}</h1> */}
-//   </>
-// );
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(myFirstElement);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Garage />);
 
 
-// ---------------------------------------
-// components with Props
+// forms in react
+import { useState } from 'react';
+import ReactDOM from 'react-dom/client';
 
-function Garage() {
+function MyForm() {
+  const [myCar, setMyCar] = useState("Volvo");
+  const handleChange = (event) => {
+    setMyCar(event.target.value)
+    console.log(myCar);
+  }
+
   return (
-    <>
-      <h1>Who lives in my Garage?</h1>
-      <Car />
-    </>
-  );
+    <form>
+      <select name='car' value={myCar} onChange={handleChange}>
+        <option value="Ford">Ford</option>
+        <option value="Volvo">Volvo</option>
+        <option value="Fiat">Fiat</option>
+      </select>
+    </form>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
+root.render(<MyForm />);

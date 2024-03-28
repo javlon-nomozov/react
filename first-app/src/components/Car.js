@@ -1,6 +1,5 @@
-// components and file names must start with uppercase letters
-function Car() {
-  return <h2>Hi, I am a Car!</h2>;
+function Car(props) {
+  return <li>I am a { props.brand }</li>;
 }
 
-export default Car;
+export default Car
