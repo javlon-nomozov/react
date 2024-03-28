@@ -1,50 +1,25 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// // importing Car Component
-// import Car from "./components/Car"
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
 
-// // using react list
-// function Garage() {
-//   const cars = [
-//     {id: 1, brand: 'Ford'},
-//     {id: 2, brand: 'BMW'},
-//     {id: 3, brand: 'Audi'}
-//   ];
-//   return (
-//     <>
-//       <h1>Who lives in my garage?</h1>
-//       <ul>
-//         {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
-//       </ul>
-//     </>
-//   );
-// }
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<Garage />);
-
-
-// forms in react
-import { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-
-function MyForm() {
-  const [myCar, setMyCar] = useState("Volvo");
-  const handleChange = (event) => {
-    setMyCar(event.target.value)
-    console.log(myCar);
-  }
-
+export default function App() {
   return (
-    <form>
-      <select name='car' value={myCar} onChange={handleChange}>
-        <option value="Ford">Ford</option>
-        <option value="Volvo">Volvo</option>
-        <option value="Fiat">Fiat</option>
-      </select>
-    </form>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MyForm />);
+root.render(<App />);
