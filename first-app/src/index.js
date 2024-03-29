@@ -1,12 +1,11 @@
 import { useState } from "react";
 import ReactDOM from "react-dom/client";
-import Todos from "./components/Todos";
+import MyForm from "./MyForm";
 // css fayllarni import qisa bo'ldi ishlayveradi
-import './styles/App.css';
+import "./App.css";
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
 
   const increment = () => {
     setCount((c) => c + 1);
@@ -14,7 +13,7 @@ const App = () => {
 
   return (
     <>
-      <Todos todos={todos} />
+      <MyForm />
       <hr />
       <div>
         Count: {count}
@@ -24,5 +23,5 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
