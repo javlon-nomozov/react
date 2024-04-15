@@ -1,28 +1,39 @@
-import { useState } from "react";
 import ReactDOM from "react-dom/client";
-import Todos from "./components/Todos";
-// css fayllarni import qisa bo'ldi ishlayveradi
-import './styles/App.css';
 
-const App = () => {
-  const [count, setCount] = useState(0);
-  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
+import React from "react";
 
-  const increment = () => {
-    setCount((c) => c + 1);
-  };
+import products from "./data/products";
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+} from "react-router-dom";
+import ProductFilter from "./components/ProductFilter";
+// import About from "./components/About";
 
-  return (
-    <>
-      <Todos todos={todos} />
-      <hr />
-      <div>
-        Count: {count}
-        <button onClick={increment}>+</button>
-      </div>
-    </>
-  );
-};
+function App() {
+	return (
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						exact
+						path="/"
+						element={<ProductFilter products={products} />}
+					/>
+					<Route
+						exact
+						path="/about"
+						element={<p>about</p>}
+					/>
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
+}
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// export default App;
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
